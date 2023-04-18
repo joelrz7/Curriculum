@@ -1,0 +1,132 @@
+
+
+drop table enfermedad cascade constraints;
+drop table paciente cascade constraints;
+drop table historial cascade constraints;
+drop table linea_historial cascade constraints;
+drop table localizacion cascade constraints;
+drop table estancias_pacientes cascade constraints;
+
+CREATE TABLE enfermedad (
+ id_enfermedad  SMALLINT PRIMARY KEY,
+ nombre VARCHAR(30) NOT NULL UNIQUE,
+ descripcion      VARCHAR(100),
+ t_recuperacion INT) ;
+
+
+INSERT INTO enfermedad VALUES (1, 'COV', 'Coronavirus', 15);
+INSERT INTO enfermedad VALUES (2, 'J09', 'Gripe A', 9);
+INSERT INTO enfermedad VALUES (3, 'A95', 'Fiebre Amarilla', 8);
+INSERT INTO enfermedad VALUES (4, 'A75', 'Tifus', 18);
+INSERT INTO enfermedad VALUES (5, 'A90', 'Fiebre del dengue', 7);
+
+
+CREATE TABLE paciente (
+ id_paciente    SMALLINT PRIMARY KEY ,
+ nombre    VARCHAR (20) NOT NULL,
+ apellidos    VARCHAR (50) NOT NULL,
+ fecha_nacimiento DATE,
+ poblacion VARCHAR (50),
+ id_medico SMALLINT,
+ FOREIGN KEY (id_medico) REFERENCES paciente(id_paciente)
+ );
+
+
+INSERT INTO paciente VALUES (1,'Silvia','Fernandez',TO_DATE('1980-12-17','YYYY-MM-DD'), 'Zaragoza',NULL);
+INSERT INTO paciente VALUES (2,'Ana','Molina', TO_DATE('1980-02-20','YYYY-MM-DD'), 'Calatayud',1);
+INSERT INTO paciente VALUES (3,'Sergio','Tovar', TO_DATE('1981-02-22','YYYY-MM-DD'), 'Huesca',1);
+INSERT INTO paciente VALUES (4,'David','Martin', TO_DATE('1981-04-02','YYYY-MM-DD'), 'Teruel',2);
+INSERT INTO paciente VALUES (5,'Soraya','Basarrate', TO_DATE('1981-09-29','YYYY-MM-DD'), 'Zaragoza',1);
+INSERT INTO paciente VALUES (6,'Elena','Romero', TO_DATE('1981-05-01','YYYY-MM-DD'), 'Huesca',1); 
+INSERT INTO paciente VALUES (7,'Joaquin','Sanchez', TO_DATE('1981-06-09','YYYY-MM-DD'), 'Huesca',2);
+INSERT INTO paciente VALUES (8,'Beatriz','Abril',TO_DATE('1981-11-09','YYYY-MM-DD'), 'Teruel',1);
+INSERT INTO paciente VALUES (9,'Luis','Gimeno', TO_DATE('1981-11-09','YYYY-MM-DD'), 'Zaragoza',2);
+INSERT INTO paciente VALUES (10,'Hugo','Formento', TO_DATE('1981-09-08','YYYY-MM-DD'), 'Teruel',1);
+
+
+CREATE TABLE historial (
+ id_historial    SMALLINT PRIMARY KEY ,
+ id_paciente SMALLINT,
+ grupo_sanguineo VARCHAR (3),
+ FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente)
+ );
+ 
+
+INSERT INTO historial VALUES (121,1,'A');
+INSERT INTO historial VALUES (122,2,'A');
+INSERT INTO historial VALUES (123,3,'B');
+INSERT INTO historial VALUES (124,4,'AB');
+INSERT INTO historial VALUES (125,5,'0');
+INSERT INTO historial VALUES (126,6,'0');
+INSERT INTO historial VALUES (127,7,'0');
+INSERT INTO historial VALUES (128,8, 'AB');
+INSERT INTO historial VALUES (129,9, 'AB');
+INSERT INTO historial VALUES (130,10,'B'); 
+
+
+CREATE TABLE linea_historial (
+ num_linea SMALLINT,
+ id_historial SMALLINT,
+ id_enfermedad SMALLINT NOT NULL,
+ fecha_inicio DATE,
+ fecha_fin DATE,
+ sintomas VARCHAR (50),
+ observaciones  VARCHAR (100),
+ FOREIGN KEY (id_historial) REFERENCES historial(id_historial),
+ FOREIGN KEY (id_enfermedad) REFERENCES enfermedad(id_enfermedad),
+ PRIMARY KEY (num_linea, id_historial)
+ );
+
+
+
+INSERT INTO linea_historial VALUES (20, 123, 1, TO_DATE('2020-1-1','YYYY-MM-DD'), TO_DATE('2020-1-10','YYYY-MM-DD'), NULL,NULL);
+INSERT INTO linea_historial VALUES (21, 123, 3, TO_DATE('2019-10-12','YYYY-MM-DD'), TO_DATE('2019-11-12','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (22, 123, 5, TO_DATE('2018-12-17','YYYY-MM-DD'), TO_DATE('2018-12-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (23, 128, 2, TO_DATE('2018-11-17','YYYY-MM-DD'), TO_DATE('2018-11-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (24, 129, 2, TO_DATE('2017-12-17','YYYY-MM-DD'), TO_DATE('2017-12-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (25, 130, 2, TO_DATE('2016-10-17','YYYY-MM-DD'), TO_DATE('2016-10-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (26, 121, 1, TO_DATE('2018-11-17','YYYY-MM-DD'), TO_DATE('2018-11-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (27, 125, 1, TO_DATE('2017-12-17','YYYY-MM-DD'), TO_DATE('2017-12-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (28, 129, 1, TO_DATE('2016-10-17','YYYY-MM-DD'), TO_DATE('2016-11-22','YYYY-MM-DD'),NULL,NULL);
+INSERT INTO linea_historial VALUES (29, 130, 1, TO_DATE('2018-11-17','YYYY-MM-DD'), TO_DATE('2018-12-05','YYYY-MM-DD'),NULL,NULL);
+
+
+
+
+CREATE TABLE localizacion(
+ id_localizacion SMALLINT PRIMARY KEY,
+ CP VARCHAR (10) NOT NULL  UNIQUE,
+ ciudad VARCHAR (30),
+ riesgo  SMALLINT DEFAULT 1);
+
+
+INSERT INTO localizacion VALUES (100, 08001, 'Cusco', 6);
+INSERT INTO localizacion VALUES (101, 33500, 'Manang', 8);
+INSERT INTO localizacion VALUES (102, 266033, 'Shandong', 9);
+INSERT INTO localizacion VALUES (103, 34033, 'Siargao', 9);
+
+CREATE TABLE estancias_pacientes (
+ id_paciente SMALLINT,
+ id_localizacion SMALLINT,
+ fecha_llegada DATE,
+ fecha_salida DATE,
+ FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
+ FOREIGN KEY (id_localizacion) REFERENCES localizacion(id_localizacion),
+ PRIMARY KEY (id_paciente, id_localizacion, fecha_llegada)
+ );
+ 
+ INSERT INTO estancias_pacientes VALUES (3, 100, TO_DATE('2019-12-1','YYYY-MM-DD'), TO_DATE('2019-12-10','YYYY-MM-DD'));
+ INSERT INTO estancias_pacientes VALUES (4, 100, TO_DATE('2019-11-1','YYYY-MM-DD'), TO_DATE('2019-11-10','YYYY-MM-DD'));
+ INSERT INTO estancias_pacientes VALUES (5, 100, TO_DATE('2018-12-1','YYYY-MM-DD'), TO_DATE('2018-12-10','YYYY-MM-DD'));
+ INSERT INTO estancias_pacientes VALUES (3, 101, TO_DATE('2016-12-20','YYYY-MM-DD'), TO_DATE('2019-12-30','YYYY-MM-DD'));
+ INSERT INTO estancias_pacientes VALUES (1, 101, TO_DATE('2018-12-20','YYYY-MM-DD'), TO_DATE('2018-12-30','YYYY-MM-DD'));
+ INSERT INTO estancias_pacientes VALUES (2, 101, TO_DATE('2019-1-20','YYYY-MM-DD'), TO_DATE('2019-1-30','YYYY-MM-DD'));
+
+
+
+commit;
+
+
+
+
+
