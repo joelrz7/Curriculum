@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: auto 0;
+        padding: auto 0;
+        
+    }
+    body{
+        background-color: #333333;
+        color: #666666;
+        font-size: 10px;
+        font-family: Verdana;
+        height: 100%;
+    }
+    
+    #secundario{
+        border-color: #555555;
+        float: left;
+        height: 100%;
+        width: 200px;
+        padding: 5px;
+        background-color: #ffff55;
+        border-style: solid;
+        
+    }
+    #principal{
+        position: sticky;
+        border-color: #555555;
+        height: 100%;
+        margin-left: 210px;
+        padding: 5px;
+        background-color: #ffffbb;
+        border-style: solid;
+    }
+    #contenido{
+        margin: 0 auto;
+        padding: 0px;
+        width: 750px;
+        margin: 0 auto;
+        height: 100%;
+    }
+    #cabecera{
+        background-image:url('logocabecera.jpg');   
+        height: 60px;
+        margin: auto 0;
+        padding: 0;
+        color: black;
+        float: top;
+        
+    }  
+    #menuverticalil{
+        list-style: none;
+        margin-left: 1em;
+        width: 80px;
+        border: 1px solid;
+        border-color: #7c7c7c;
+        text-align: left;
+        background-color: #f4f4f4;
+    
+    }
+    #menuverticalul{
+        list-style: none;
+        margin-left: 1em;
+        width: 130px;
+        border: 1px solid;
+        border-color: #7c7c7c;
+        
+        background-color: #f4f4f4;
+    
+    }
+    #menuverticalh3{
+        color: #b4045f;   
+    }
+    #menuverticallia{
+        color: #333;
+        background-color: #f4f4f4;
+        text-decoration: none; 
+        display: block;  
+        padding:.2em;
+        margin-right: 1.5em;
+        
+    }
+    #imgprin{
+        padding: 10px;
+        float: right;
+        width: 50%;
+        
+    }
+    #h3principal{
+        color: #b4045f;
+        background-color: white;
+        height: 100%;
+    }
+    #pie{
+        clear: both;
+        background-color: #338000;
+        height: 30px;
+        color: white;
+        padding-top: 10px;
+        padding-left: 10px;
+
+    }
+    .enlaces{
+        float: left;
+        text-decoration: none;
+        color: white; 
+    }
+    .creador{
+
+        float: right;
+        margin-right: 13px;
+    }
+    a:hover {
+            background-color: #336699;
+            color: white;
+    }
+    li:hover:visited{
+        background-color: #f4f4f4;
+    }
+
+</style>
+<body id="body">
+    
+
+    <div id="contenido">
+        <div id="cabecera">
+            <h1>LOGOTIPO</h1>
+        </div>
+        <div id="secundario">
+            Columna de la izquierda. <br>
+            Columna de la izquierda. <br>
+            Columna de la izquierda. <br>
+            Columna de la izquierda.<br>
+            <br/><h3 id="menuverticalh3">Mis buscadores</h3>
+            <ul class="menuvertical" id="menuverticalil">
+                
+                <li><a id="menuverticallia"href="http://www.yahoo.com">Yahoo</a></li>
+                <li><a id="menuverticallia"href="http://www.google.com">Google</a></li>
+                <li><a id="menuverticallia"href="http://www.msn.com">Msn</a></li>
+                <li><a id="menuverticallia"href="http://www.altavista.com">Altavista</a></li>
+            </ul>
+            <span>
+                &nbsp;
+            </span>
+            <h3 id="menuverticalh3">Otras informaciones</h3>
+                Otras informaciones. Otras<br> informaciones. Otras<br>
+                informaciones.
+                Otras<br> informaciones. Otras<br> informaciones. Otras<br>
+                informaciones.
+            <br/>
+            <span>
+                &nbsp;
+            </span>
+            <h3 id="menuverticalh3">Los Parque Nacionales.</h3>
+            <span>
+                &nbsp;
+            </span>
+            <ul class="menuvertical" id="menuverticalul">
+                
+                    <li><a id="menuverticallia"href="https://www.miteco.gob.es/es/parques-nacionales-oapn/quienes-somos/redparques.aspx">Red de PP, NN.</a></li>
+                    <li><a id="menuverticallia"href="https://www.picoseuropa.net/">PN Picos de Europa</a></li>
+                    <li><a id="menuverticallia"href= "http://ordesapirineos.com/">PN de Ordesa y Monte Perdido</a></li>
+                    <li><a id="menuverticallia"href="https://www.miteco.gob.es/es/red-parques-nacionales/nuestros-parques/monfrague/">PN de Monfrague</a></li>
+                    <li><a id="menuverticallia"href="https://parcsnaturals.gencat.cat/es/xarxa-de-parcs/aiguestortes/inici/index.html">PN de Aiguestortes</a></li>
+            </ul>
+    </div>
+    <div id="principal">
+        <h3 id="h3principal">Información principal.</h3>
+            Contenido principal. Contenido principal.
+            Contenido principal. Contenido principal.
+            Contenido principal.
+            <br/><br/><h3 id="h3principal">Sierra de Gredos</h3>
+            <br/><p><img id="imgprin"src="gredos.jpg" title="Sierra de Gredos." />
+            La Sierra de Gredos es una Sierra de España perteneciente al
+            sistema central,
+            situada entre las provincias de Ávila, Cáceres, Madrid y
+            Toledo. Su máxima
+            altitud se da en la provincia de Ávila, en el pico del Moro
+            Almanzor a 2592 m,
+            que divide los términos municipales de Zarpadiel de la
+            Ribera y Candeleda.
+            Está declarada parque regional. Gredos es una de las sierras
+            más extensas del
+            sistema central y está compuesta por 5 valles fluviales:
+            Alto Tormes,
+            Alto Alberche, Tiétar Oriental, Tiétar Occidental y la Vera
+            y Valle del Ambroz.</p>
+            <br/><br/><h3 id="h3principal">Pirineos.</h3>
+            <br/><p><img id="imgprin"src="pirineos.jpg" title="Pirineos." />
+            Los Pirineos o el Pirineo es un sistema montañoso situado en 
+            el noreste de la península ibérica, que hace de frontera natural 
+            entre Andorra, España y Francia. Se extiende en dirección este-oeste 
+            a lo largo de 491 km aproximadamente, desde el cabo de Creus en el 
+            mar Mediterráneo hasta su unión con la cordillera Cantábrica, donde 
+            se ha establecido la falla de Pamplona como su límite convencional 
+            geológico, no existiendo interrupción geográfica entre ambas 
+            formaciones.En su parte central tiene una anchura de unos 150 km.
+            <br/><br/><h3 id="h3principal">Picos de Europa.</h3>
+            <br/><p>
+            Los Picos de Europa son un macizo montañoso localizado en el norte 
+            de España que pertenece a la parte central de la cordillera Cantábrica. 
+            Aunque no muy extenso, su cercanía al mar hace que sea pródigo en 
+            accidentes geográficos de gran interés. En la actualidad el parque 
+            nacional de los Picos de Europa constituye el segundo parque nacional 
+            más visitado de España, después del parque nacional del Teide
+            
+
+    </div>
+        <div id="pie">
+            <span class="enlaces">
+                <a href="http://www.google.com">Google</a> |
+                <a href="http://www.yahoo.com">Yahoo</a> |
+                <a href="http://www.msn.com">Msn</a> |
+                <a href="http://www.altavista.com">Altavista</a> |
+                <a href="http://reddeparquesnacionales.mma.es/parques/index.htm">Red de PP. NN.</a>
+            </span>
+            <span class="creador">
+                Realizado por Blanca de Lope.
+
+            </span>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
