@@ -1,0 +1,23 @@
+<!--Ejercicio basico 03-->
+<?xml version = "1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+
+ <xsd:element name="persona" type="tipoPersona"/> 
+
+ <xsd:complexType name="tipoPersona">
+  <xsd:sequence>
+   <xsd:element name="datos"     type="info"/>
+   <xsd:element name="comentario" minOccurs="0" type="xsd:string"/>
+  </xsd:sequence>
+  <xsd:attribute name="nacimiento" type="xsd:date"/>
+ </xsd:complexType>
+
+ <xsd:complexType name="info">
+  <xsd:sequence>
+   <xsd:element name="nombre"    type="xsd:string"/>
+   <xsd:element name="apellidos" type="xsd:string"/>
+   <xsd:element name="dni"       type="xsd:string"/>
+  </xsd:sequence>
+ </xsd:complexType>
+
+</xsd:schema>
