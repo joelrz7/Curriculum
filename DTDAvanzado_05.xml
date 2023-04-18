@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE facturas [
+<!NOTATION jpg SYSTEM "aplicaciones/visordeimagenes.exe" >
+<!-- Notation que indica el programa para procesar jpg --><!-- Entidades con las imágenes de las carátulas de las películas--><!ENTITY foto_p0360 SYSTEM "caratulas/p0360.jpg" NDATA jpg>
+<!ENTITY foto_p0437 SYSTEM "caratulas/p0437.jpg" NDATA jpg>
+<!ENTITY foto_p1201 SYSTEM "caratulas/p1201.jpg" NDATA jpg>
+<!-- Elemento raiz: facturas --><!ELEMENT facturas (factura)*>
+<!-- Elemento factura --><!ELEMENT factura (datos_cliente , datos_factura)>
+<!-- Elemento datos_cliente --><!ELEMENT datos_cliente (nombre , apellido , apellido , dni , tfno)>
+<!ATTLIST datos_cliente ident ID #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellido (#PCDATA)>
+<!ELEMENT dni (#PCDATA)>
+<!ELEMENT tfno (#PCDATA)>
+<!-- Elemento datos_factura --><!ELEMENT datos_factura (resguardo , (alquileres , compras)*)>
+<!-- Elemento resguardo --><!ELEMENT resguardo (forma_pago , importe_total)>
+<!ELEMENT forma_pago (#PCDATA)>
+<!ELEMENT importe_total (#PCDATA)>
+<!-- Elemento alquileres --><!ELEMENT alquileres (fecha , peliculas)>
+<!-- Elementos fecha --><!ELEMENT fecha (#PCDATA)>
+<!-- Elemento peliculas --><!ELEMENT peliculas (pelicula)+>
+<!-- Elemento pelicula --><!ELEMENT pelicula (titulo , genero , duracion , actores)>
+<!ATTLIST pelicula id_pelicula ID #REQUIRED>
+<!ATTLIST pelicula valoracion CDATA "">
+<!ATTLIST pelicula caratula ENTITY #IMPLIED>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT genero (#PCDATA)>
+<!ELEMENT duracion (#PCDATA)>
+<!-- Elemento actores --><!ELEMENT actores (actor , actor , actor)>
+<!ELEMENT actor (nombre , apellido , apellido)>
+<!-- Elemento compras --><!ELEMENT compras (dvds | cintas | (dvds , cintas))>
+<!-- Elemento dvds --><!ELEMENT dvds (dvd)+>
+<!-- Elemento dvd --><!ELEMENT dvd (extras? , titulo , fecha_salida_mercado)>
+<!ELEMENT extras EMPTY>
+<!ELEMENT fecha_salida_mercado (#PCDATA)>
+<!-- Elemento cintas --><!ELEMENT cintas (cinta)+>
+<!-- Elemento cinta --><!ELEMENT cinta (titulo , formato , rebobinado?)>
+<!ELEMENT formato (#PCDATA)>
+<!ELEMENT rebobinado EMPTY>
+]>
+<!-- XML **********************************/-->
+<facturas>
+   <factura>
+      <datos_cliente ident="c01">
+      <nombre>Antonio</nombre>
+  <apellido>Moreno</apellido>
+  <apellido>Flores</apellido>
+  <dni>123456789X</dni>
+  <tfno>916663322</tfno>
+   </datos_cliente>
+   
+   <datos_factura>
+      <resguardo>
+     <forma_pago>efectivo</forma_pago>
+ <importe_total>35</importe_total>
+  </resguardo>
+  <alquileres>
+     <fecha>12/01/2007</fecha>
+ <peliculas>
+    <pelicula id_pelicula="p320" caratula="foto_p0360">
+       <titulo>AQUELLAS JUERGAS UNIVERSITARIAS</titulo>
+   <genero>Comedia</genero>
+   <duracion>97min</duracion>
+   <actores>
+      <actor>
+     <nombre>Luke</nombre>
+                 <apellido>Wilson</apellido>
+                 <apellido/>
+  </actor>  
+      <actor>
+   <nombre>Will</nombre>
+                 <apellido>Farrel</apellido>
+                 <apellido/>
+  </actor>  
+      <actor>
+   <nombre>Vince</nombre>
+                 <apellido>Vaughn</apellido>
+                 <apellido/> 
+  </actor>  
+   </actores>
+     </pelicula>
+ </peliculas>
+  </alquileres>
+  <compras>
+     <dvds>
+    <dvd>
+       <extras/>
+   <titulo>El oro de Moscú</titulo>
+   <fecha_salida_mercado>2006</fecha_salida_mercado>
+    </dvd>
+ </dvds>
+ <cintas>
+    <cinta>
+       <titulo>Gladiator</titulo>
+   <formato>VHS</formato>
+    </cinta>
+ </cintas>
+  </compras>
+   </datos_factura>
+   </factura>
+</facturas>

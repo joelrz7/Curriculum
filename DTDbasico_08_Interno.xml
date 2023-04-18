@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE informe [
+    <!ELEMENT informe (cabecera, datos)>
+    <!ELEMENT cabecera (empresa, titulo, descripcion, fecha)>
+    <!ELEMENT empresa (#PCDATA)>
+    <!ELEMENT titulo (#PCDATA)>
+    <!ELEMENT descripcion (#PCDATA)>
+    <!ELEMENT fecha (#PCDATA)>
+    <!ELEMENT datos (regionNorte, regionCentro, regionSur)>
+    <!ELEMENT regionNorte (trim1, trim2, trim3, trim4)>
+    <!ELEMENT regionCentro (trim1, trim2, trim3, trim4)>
+    <!ELEMENT regionSur (trim1, trim2, trim3, trim4)>
+	<!ELEMENT trim1 (ventas)>
+	<!ELEMENT trim2 (ventas)>
+	<!ELEMENT trim3 (ventas)>
+	<!ELEMENT trim4 (ventas)>
+	<!ELEMENT ventas EMPTY>
+	<!ATTLIST ventas libros CDATA "NO_INFO">
+	<!ATTLIST trim1 numero CDATA #FIXED "1">
+	<!ATTLIST trim2 numero CDATA #FIXED "2">
+	<!ATTLIST trim3 numero CDATA #FIXED "3">
+	<!ATTLIST trim4 numero CDATA #FIXED "4">
+	
+]>
+<informe>
+  <cabecera>
+    <empresa>Ediciones Aranda</empresa>
+    <titulo>Informe regional del ventas</titulo>
+    <descripcion>informe de ventas para las regiones Norte, Centro y Sur</descripcion>
+    <fecha>30/12/2009</fecha>
+  </cabecera>
+  <datos>
+    <regionNorte>
+        <trim1 numero="1">
+          <ventas libros="24000"/>
+		</trim1>
+		<trim2 numero="2">
+          <ventas libros="38600"/>
+		</trim2>
+		<trim3 numero="3">
+          <ventas/>
+		</trim3>
+		<trim4 numero="4">
+          <ventas/>
+		</trim4>
+    </regionNorte>
+    <regionCentro>
+		<trim1 numero="1">
+          <ventas/>
+		</trim1>
+		<trim2 numero="2">
+          <ventas libros="16080"/>
+		</trim2>
+		<trim3 numero="3">
+          <ventas libros="25000"/>
+		</trim3>
+		<trim4 numero="4">
+          <ventas libros="29000"/>
+		</trim4>
+    </regionCentro>
+    <regionSur>
+		<trim1 numero="1">
+          <ventas libros="27000"/>
+		</trim1>
+		<trim2 numero="2">
+          <ventas libros="31400"/>
+		</trim2>
+		<trim3 numero="3">
+          <ventas libros="40100"/>
+		</trim3>
+		<trim4 numero="4">
+          <ventas libros="30000"/>
+		</trim4>
+    </regionSur>
+  </datos>
+</informe>
